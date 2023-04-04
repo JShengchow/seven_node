@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "target": "es5",
+    "lib": ["ESNext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "types": ["vitest/globals"],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@middleware/*": [
+        "src/lib/middleware/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
