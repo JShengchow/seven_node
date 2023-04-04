@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
-    "noImplicitThis": false,
-    "noImplicitAny": false,
-    "target": "es5",
+    "target": "ES5",
     "lib": ["ESNext"],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -13,7 +10,9 @@
     "allowJs": true,
     "baseUrl": ".",
     "outDir": "./dist",
-    "types": ["vitest/globals"],
+    "typeRoots": [
+      "./node_modules/@types/"
+    ],
     "paths": {
       "@/*": [
         "src/*"

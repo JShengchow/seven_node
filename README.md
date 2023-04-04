@@ -1,98 +1,42 @@
-# node-server
+# time-lover-server
+
+时光恋人服务端源码仓库
 
 ## 简介
-适用于中小型web应用,demo演示等等的服务端开发模板
+一款情侣之间记录日常生活趣事,生活足迹的Web应用
 
-使用了自定义的Web 框架[flash-wolves](https://github.com/ATQQ/flash-wolves)，支持build为js产物
+## 效果
+| 首页                                                                                        | 登录                                                                                        | 菜单                                                                                        | 体重记录                                                                                    |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTA2MzkyMw==637485063923"/> | <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTE1MDExNQ==637485150115"/> | <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTE5OTA2MA==637485199060"/> | <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTI1ODAxMw==637485258013"/> |
+## 功能介绍
+### 基础
+* [x] 验证码登录
 
-开箱即用，自定义能力强，核心代码很少，diy的不二之选
-## 快速食用
-1. 克隆仓库到本地
-```sh
-git clone https://github.com/ATQQ/node-server.git
-```
+### 体重记录
+* [x] 记录体重信息
+* [x] 多样化/个性化的数据统计
+## 相关资料
+* [数据库设计](./docs/db.md)
+* [接口设计](./docs/api.md)
+* [客户端仓库](https://github.com/ATQQ/timeLover)
+## 启动
 
-2. 进入目录
-```sh
-cd node-server
-```
-
-包管理工具，推荐使用 [PNPM](https://pnpm.io/zh/) 
-
-3. 安装相关依赖
-
+1. 安装相关依赖
 ```sh
 pnpm install
 ```
 
-1. 启动项目
+2. 启动项目
 ```sh
-# -------dev--------
-pnpm dev
-
 # -------prod--------
-# 先构建
-pnpm build
-# 再启动
+pnpm run start
+# or
 pnpm start
+
+# -------dev--------
+pnpm run dev
+# or
+pnpm dev
 ```
----
 
-## 包含的特性
-### 通用
-* [x] router(路由)
-* [x] localStorage(本地存储)
-* [x] tokenUtil
-* [x] 拦截器
-  * [x] 全局拦截
-  * [x] 路由拦截
-  * [ ] and more
-* [x] 单元测试 - vitest
-* [x] 数据库方法包装
-  * [x] mysql
-  * [x] redis
-  * [x] mongodb
-
-### 数据库相关
-* [x] mysql
-* [x] redis
-* [x] mongodb
-* ...
-
-### 错误处理
-* 运行时的错误
-  * [x] 同步
-  * [x] Promise rejection
-  * [x] async await
-
-## 目录简介
-
-```sh
-src
-├── config            # 配置文件
-│   └── index.ts
-├── constants         # 常量
-│   ├── dbModalParam.ts
-│   ├── errorMsg.ts
-│   └── index.ts
-├── db                # 数据库操作
-│   ├── modal
-│   │   └── index.ts
-│   └── userDb.ts
-├── lib               # 自己封装的模块
-│   ├── dbConnect     # 链接数据库
-│   │   └── mysql.ts  # mysql
-│   │   └── redis.ts  # redis
-│   │   └── mongodb.ts  # mongodb
-│   │ 
-├── middleware              # 中间件
-│   ├── index.ts
-│   ├── routeInterceptor.ts # 路由拦截
-│   └── serverInterceptor.ts  # 全局拦截
-├── controllers              # 路由
-│   ├── index.ts          # 对外统一暴露
-│   └── user.ts     # User 相关路由
-│ 
-├── index.ts           # 入口启动文件
-└── utils               # 一些工具方法
-```

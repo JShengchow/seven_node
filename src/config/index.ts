@@ -1,7 +1,12 @@
 export const serverConfig = {
-  port: +process.env.SERVER_PORT,
-  hostname: process.env.SERVER_HOST,
+  port: +process.env.PORT,
+  hostname: 'localhost'
 }
+
+// // 判断环境
+// if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
+//     config = proConfig
+// }
 
 // 开发环境的测试数据库
 export const mysqlConfig = {
@@ -9,7 +14,7 @@ export const mysqlConfig = {
   port: +process.env.MYSQL_DB_PORT,
   database: process.env.MYSQL_DB_NAME,
   user: process.env.MYSQL_DB_USER,
-  password: process.env.MYSQL_DB_PWD,
+  password: process.env.MYSQL_DB_PWD
 }
 
 export const mongodbConfig = {
@@ -18,21 +23,27 @@ export const mongodbConfig = {
   database: process.env.MONGO_DB_NAME,
   user: process.env.MONGO_DB_USER,
   password: process.env.MONGO_DB_PWD,
-  auth: String(true) === process.env.MONGO_DB_NEED_AUTH,
+  auth: String(true) === process.env.MONGO_DB_NEED_AUTH
 }
 
 export const redisConfig = {
   host: process.env.REDIS_DB_HOST,
   port: +process.env.REDIS_DB_PORT,
-  password: process.env.REDIS_DB_PASSWORD,
-  auth: String(true) === process.env.REDIS_DB_NEED_AUTH,
+  password: process.env.REDIS_DB_PASSWORD
 }
 
 // 通过环境变量注入
+const { QINIU_ACCESS_KEY, QINIU_SECRET_KEY } = process.env
 
 export const qiniuConfig = {
-  accessKey: process.env.QINIU_ACCESS_KEY,
-  secretKey: process.env.QINIU_SECRET_KEY,
-  bucketName: process.env.QINIU_BUCKET_NAME,
-  bucketDomain: process.env.QINIU_BUCKET_DOMAIN,
+  accessKey: QINIU_ACCESS_KEY,
+  secretKey: QINIU_SECRET_KEY
+}
+
+// 腾讯云
+export const txConfig = {
+  secretId: process.env.secretId,
+  secretKey: process.env.secretKey,
+  templateId: process.env.TENCENT_MESSAGE_TemplateID,
+  smsSdkAppid: process.env.TENCENT_MESSAGE_SmsSdkAppid
 }

@@ -1,9 +1,10 @@
+
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
   splitting: false,
-  sourcemap: true,
+  sourcemap: false,
   clean: true,
   outDir: 'dist',
-  entryPoints: ['src/index.ts'],
+  entryPoints: ['src/server.ts'],
 })

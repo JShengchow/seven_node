@@ -1,2 +1,2 @@
 dist
-tsup.config.ts
+*.js

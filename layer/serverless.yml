@@ -1,0 +1,13 @@
+org: '1256505457'
+app: time-lover-server
+stage: prod
+component: layer
+name: time-lover-server-layer
+inputs:
+  name: time-lover-server-layer
+  region: ap-chengdu
+  src:
+    src: ../node_modules
+    targetDir: /node_modules
+  runtimes:
+    - Nodejs10.15

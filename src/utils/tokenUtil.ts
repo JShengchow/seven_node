@@ -1,3 +1,4 @@
+import { FWRequest } from 'flash-wolves'
 import { User } from '@/db/modal/index'
 import { expiredRedisKey, getRedisVal, setRedisValue } from '@/db/redisDb'
 import { encryption } from './stringUtil'
@@ -6,12 +7,12 @@ import { encryption } from './stringUtil'
  */
 class TokenUtil {
   /**
-     * 生成token
-     */
-  createToken(user: User, timeout = 60 * 60 * 24) {
-    const { account, power } = user
-    const token = encryption([account, power, Date.now()].join())
-    setRedisValue(token, JSON.stringify(user), timeout)
+   * 生成token
+   */
+  async createToken(user: User, timeout = 60 * 60 * 24) {
+    const { phone, userId } = user
+    const token = encryption([phone, userId, Date.now()].join())
+    await setRedisValue(token, JSON.stringify(user), timeout)
     return token
   }
 
@@ -38,3 +39,10 @@ class TokenUtil {
 }
 
 export default TokenUtil.getInstance()
+
+export async function getUserInfo(req: FWRequest) {
+  const user = await TokenUtil.getInstance().getUserInfo(
+    req.headers.token as string
+  )
+  return user
+}

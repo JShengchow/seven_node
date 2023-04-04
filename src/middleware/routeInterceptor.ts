@@ -1,10 +1,13 @@
 import { Middleware } from 'flash-wolves'
+import { GlobalError } from '@/constants/errorMsg'
+import { getUserInfo } from '@/utils/tokenUtil'
 
 const interceptor: Middleware = async (req, res) => {
-  const { options } = req.route
-  console.log(`beforeRunRoute:${req.method} - ${req.url}`)
-  if (options) {
-    console.log(`route-ops:${JSON.stringify(options)}`)
+  if (req?.route?.meta?.needLogin) {
+    const user = await getUserInfo(req)
+    if (!user) {
+      res.failWithError(GlobalError.powerError)
+    }
   }
 }
 export default interceptor
